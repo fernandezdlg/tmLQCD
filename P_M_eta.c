@@ -37,7 +37,7 @@
 #include "X_psi.h"
 #include "gamma.h"
 
-double rnorm=-1;
+double pmeta_rnorm=-1;
 
 /* |R>=rnorm^2 Q^2 |S> */
 void norm_X_sqr_psi(spinor * const R, spinor * const S,
@@ -214,7 +214,7 @@ void norm_X_sqr_psi(spinor * const R, spinor * const S, double const mstar) {
     printf("using X_psiSquare.\n");
     X_psiSquare(R, S, mstar);
   }
-  mul_r(R, rnorm*rnorm, R, VOLUME);
+  mul_r(R, pmeta_rnorm*pmeta_rnorm, R, VOLUME);
 
 
   free(aux_);
@@ -241,7 +241,7 @@ void norm_X_n_psi(spinor * const R, spinor * const S,
   /* Here is where we have to include our operator which in this case is
      X = 1 - (2M^2)/(D_m^dagger*D_m + M^2)  */
     X_psi(R, aux, mstar);
-    npar *= rnorm;
+    npar *= pmeta_rnorm;
   }
   mul_r(R, npar, R, VOLUME);
 
